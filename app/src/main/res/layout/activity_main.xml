@@ -8,125 +8,157 @@
     android:background="#E4CCA3"
     tools:context=".MainActivity">
 
-    <com.example.cisc482doodle.DoodleView
-        android:id="@+id/doodleView"
-        android:layout_width="416dp"
-        android:layout_height="417dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="8dp"
-        android:layout_weight="1"
-        android:background="#009688"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <!-- Tool Panel -->
+    <LinearLayout
+        android:id="@+id/toolPanel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TableLayout
-        android:layout_width="417dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:layout_width="377dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <!-- Brush Size -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="125dp"
-                android:layout_height="match_parent"
-                android:text="Brush Size" />
+                android:id="@+id/textViewBrushSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Brush Size"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingStart="8dp" />
 
             <SeekBar
-                android:id="@+id/seekBar5"
-                android:layout_width="291dp"
-                android:layout_height="match_parent" />
-        </TableRow>
+                android:id="@+id/seekBarBrushSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
 
-        <TableRow
+        <!-- Opacity -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:id="@+id/textViewOpacity"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Opacity" />
+                android:layout_weight="1"
+                android:text="Opacity"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingStart="8dp" />
 
             <SeekBar
-                android:id="@+id/seekBar6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </TableRow>
+                android:id="@+id/seekBarOpacity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
 
-        <TableRow
+        <!-- Color Picker -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
+                android:id="@+id/textViewColor"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Color" />
+                android:layout_weight="1"
+                android:text="Color"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingStart="8dp" />
+
             <LinearLayout
                 android:id="@+id/colorPicker"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/colorRed"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#FF0000" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="#FF0000"
+                    android:layout_margin="4dp" />
 
                 <ImageView
                     android:id="@+id/colorGreen"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#00FF00" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="#00FF00"
+                    android:layout_margin="4dp" />
 
                 <ImageView
                     android:id="@+id/colorBlue"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#0000FF" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="#0000FF"
+                    android:layout_margin="4dp" />
 
                 <ImageView
                     android:id="@+id/colorBlack"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#000000" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="#000000"
+                    android:layout_margin="4dp" />
             </LinearLayout>
+        </LinearLayout>
 
-        </TableRow>
-
-        <TableRow
+        <!-- Clear Canvas Button -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="124dp"
-                android:layout_height="match_parent"
-                android:text="Clear Canvas" />
+                android:id="@+id/textViewClearCanvas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Clear Canvas"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingStart="8dp" />
 
             <ImageButton
-                android:id="@+id/clearbutton"
-                android:layout_width="277dp"
-                android:layout_height="34dp"
-                android:contentDescription="@string/app_name"
-                android:text="Clear Canvas"
-                app:srcCompat="@android:drawable/ic_menu_delete" />
-        </TableRow>
-    </TableLayout>
+                android:id="@+id/clearButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_menu_delete"
+                android:layout_margin="4dp"
+                android:contentDescription="Clear Canvas" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Doodle View Canvas -->
+    <com.example.cisc482doodle.DoodleView
+        android:id="@+id/doodleView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/toolPanel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

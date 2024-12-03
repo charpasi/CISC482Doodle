@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import androidx.activity.EdgeToEdge;
@@ -27,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         doodleView = findViewById(R.id.doodleView);
-        ImageButton clearButton = findViewById(R.id.clearbutton);
+        ImageButton clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener(view -> {
             doodleView.clearCanvas();
         });
 
-        SeekBar brushSizer = findViewById(R.id.seekBar5);
+        SeekBar brushSizer = findViewById(R.id.seekBarBrushSize);
         brushSizer.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SeekBar brushOpacity = findViewById(R.id.seekBar6);
+        SeekBar brushOpacity = findViewById(R.id.seekBarOpacity);
         brushOpacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -63,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button redButton = findViewById(R.id.colorRed);
-        Button greenButton = findViewById(R.id.colorGreen);
-        Button blueButton = findViewById(R.id.colorBlue);
-        Button blackButton = findViewById(R.id.colorBlack);
+        ImageView redButton = findViewById(R.id.colorRed);
+        ImageView greenButton = findViewById(R.id.colorGreen);
+        ImageView blueButton = findViewById(R.id.colorBlue);
+        ImageView blackButton = findViewById(R.id.colorBlack);
 
         redButton.setOnClickListener(view -> doodleView.changeColor(Color.RED));
         greenButton.setOnClickListener(view -> doodleView.changeColor(Color.GREEN));
