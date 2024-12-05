@@ -121,12 +121,12 @@
 
             <ImageButton
                 android:id="@+id/clearButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@android:color/transparent"
-                android:src="@android:drawable/ic_menu_delete"
+                android:layout_width="48dp"
+                android:layout_height="50dp"
                 android:layout_margin="4dp"
-                android:contentDescription="Clear Canvas" />
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/clear_canvas"
+                android:src="@android:drawable/ic_menu_delete" />
         </LinearLayout>
     </LinearLayout>
 

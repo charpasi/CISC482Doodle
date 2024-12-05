@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 float ratio = progress / (float) seekBar.getMax();
-                int color = interpolateColor(Color.RED, Color.GREEN, Color.BLUE, ratio);
+                int color = interpolateColor(Color.RED, Color.YELLOW, Color.BLUE, ratio);
                 doodleView.changeColor(color);
             }
 
