@@ -15,6 +15,22 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     private DoodleView doodleView;
+    private int interpolateColor(int startColor, int middleColor, int endColor, float ratio) {
+        if (ratio < 0.5f) {
+            return blendColors(startColor, middleColor, ratio * 2);
+        } else {
+            return blendColors(middleColor, endColor, (ratio - 0.5f) * 2);
+        }
+    }
+
+    private int blendColors(int color1, int color2, float ratio) {
+        int alpha = (int) (Color.alpha(color1) * (1 - ratio) + Color.alpha(color2) * ratio);
+        int red = (int) (Color.red(color1) * (1 - ratio) + Color.red(color2) * ratio);
+        int green = (int) (Color.green(color1) * (1 - ratio) + Color.green(color2) * ratio);
+        int blue = (int) (Color.blue(color1) * (1 - ratio) + Color.blue(color2) * ratio);
+
+        return Color.argb(alpha, red, green, blue);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,15 +80,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageView redButton = findViewById(R.id.colorRed);
-        ImageView greenButton = findViewById(R.id.colorGreen);
-        ImageView blueButton = findViewById(R.id.colorBlue);
-        ImageView blackButton = findViewById(R.id.colorBlack);
 
-        redButton.setOnClickListener(view -> doodleView.changeColor(Color.RED));
-        greenButton.setOnClickListener(view -> doodleView.changeColor(Color.GREEN));
-        blueButton.setOnClickListener(view -> doodleView.changeColor(Color.BLUE));
-        blackButton.setOnClickListener(view -> doodleView.changeColor(Color.BLACK));
+        SeekBar colorSlider = findViewById(R.id.colorSlider);
+        colorSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                float ratio = progress / (float) seekBar.getMax();
+                int color = interpolateColor(Color.RED, Color.GREEN, Color.BLUE, ratio);
+                doodleView.changeColor(color);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
 
     }
 }
