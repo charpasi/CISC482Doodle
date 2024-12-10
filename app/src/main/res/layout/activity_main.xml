@@ -6,18 +6,25 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="#98C5EB"
-    tools:context=".MainActivity">
+    android:visibility="visible"
+    tools:context=".MainActivity"
+    tools:visibility="visible">
 
     <!-- Tool Panel -->
+
+
+    <!-- Doodle View Canvas -->
+
     <LinearLayout
         android:id="@+id/toolPanel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="27dp"
+        tools:visibility="visible">
 
         <!-- Brush Size -->
 
@@ -32,8 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingStart="8dp"
-                android:text="Brush Size"
+                android:text="@string/brush_size"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -56,8 +62,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingStart="8dp"
-                android:text="Opacity"
+                android:text="@string/opacity"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -80,8 +85,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingStart="8dp"
-                android:text="Color"
+                android:text="@string/color"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -115,16 +119,16 @@
                 android:layout_height="wrap_content"
                 android:background="#CDCECF"
                 android:padding="8dp"
-                android:text="Trace Templates ▼"
+                android:text="@string/trace_templates"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/done_button"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Done"
+                android:text="@string/done"
                 android:textColorLink="#E91E63"
                 android:visibility="gone" />
 
@@ -135,57 +139,44 @@
             android:id="@+id/dropDownContainer"
             android:layout_width="wrap_content"
             android:layout_height="98dp"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:paddingTop="8dp"
             android:visibility="gone"
             tools:visibility="visible">
 
             <!-- Trace options drop-down -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/duckButton"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/duckbutton"
+                android:contentDescription="@string/duck"
+                android:gravity="center"
+                android:visibility="visible"
+                tools:visibility="visible" />
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dogButton"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/dogbutton"
+                android:baselineAligned="false"
+                android:contentDescription="@string/dog"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:visibility="visible" />
 
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/duckButton"
-                        android:layout_width="128dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/duckbutton"
-                        android:contentDescription="duck"
-                        android:gravity="center"
-                        android:visibility="visible"
-                        tools:visibility="visible" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/dogButton"
-                        android:layout_width="128dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/dogbutton"
-                        android:baselineAligned="false"
-                        android:contentDescription="@string/dog"
-                        android:elevation="8dp"
-                        android:gravity="center"
-                        android:textAlignment="center"
-                        android:visibility="visible" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/fishButton"
-                        android:layout_width="128dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/fishbutton"
-                        android:contentDescription="@string/fish"
-                        android:visibility="visible"
-                        tools:layout_editor_absoluteX="28dp"
-                        tools:layout_editor_absoluteY="418dp"
-                        tools:visibility="visible" />
-                </TableRow>
-
-            </TableLayout>
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fishButton"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fishbutton"
+                android:contentDescription="@string/fish"
+                android:visibility="visible"
+                tools:layout_editor_absoluteX="28dp"
+                tools:layout_editor_absoluteY="418dp"
+                tools:visibility="visible" />
         </LinearLayout>
 
         <!-- Clear Canvas Button -->
@@ -201,8 +192,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingStart="8dp"
-                android:text="Clear Canvas"
+                android:text="@string/clear_canvas"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -214,32 +204,26 @@
                 android:background="#CDCECF"
                 android:contentDescription="@string/clear_canvas"
                 android:src="@android:drawable/ic_menu_delete" />
+
         </LinearLayout>
 
     </LinearLayout>
 
-
-    <!-- Doodle View Canvas -->
     <com.example.cisc482doodle.DoodleView
         android:id="@+id/doodleView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
+        android:visibility="visible"
+        tools:visibility="visible" />
 
     <com.example.cisc482doodle.DoodleView
-        android:id="@+id/doodleView"
+        android:id="@+id/doodleView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
-
+        android:visibility="visible"
+        tools:visibility="visible" />
 
     <com.example.cisc482doodle.DoodleView
         android:id="@+id/duckView"
@@ -247,31 +231,27 @@
         android:layout_height="0dp"
         android:alpha=".75"
         android:background="@drawable/ducktrace"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
+        android:visibility="gone" />
 
     <com.example.cisc482doodle.DoodleView
         android:id="@+id/dogView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/dog_outline"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
+        android:visibility="gone" />
 
     <com.example.cisc482doodle.DoodleView
         android:id="@+id/fishView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/fish_outline"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
+        android:visibility="gone" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

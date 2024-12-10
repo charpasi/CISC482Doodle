@@ -6,4 +6,8 @@
     <string name="dog">dog</string>
     <string name="duck" />
     <string name="fish">\n</string>
+    <string name="trace_templates">Trace Templates ▼</string>
+    <string name="color">Color</string>
+    <string name="opacity">Opacity</string>
+    <string name="brush_size">Brush Size</string>
 </resources>
