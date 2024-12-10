@@ -2,19 +2,24 @@ package com.example.cisc482doodle;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     private DoodleView doodleView;
+
     private int interpolateColor(int startColor, int middleColor, int endColor, float ratio) {
         if (ratio < 0.5f) {
             return blendColors(startColor, middleColor, ratio * 2);
@@ -97,5 +102,43 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
+        TextView textViewTraceTemplates = findViewById(R.id.textViewTraceTemplates);
+        LinearLayout dropDownContainer = findViewById(R.id.dropDownContainer);
+        AppCompatButton doneButton = findViewById(R.id.done_button);
+
+        textViewTraceTemplates.setOnClickListener(v -> {
+            if (dropDownContainer.getVisibility() == View.GONE) {
+                dropDownContainer.setVisibility(View.VISIBLE);
+                doneButton.setVisibility(View.VISIBLE);
+            } else {
+                dropDownContainer.setVisibility(View.GONE);
+                doneButton.setVisibility(View.GONE);
+            }
+        });
+
+        findViewById(R.id.duckButton).setOnClickListener(v -> {
+            doodleView.setBackgroundResource(R.drawable.ducktrace);
+            dropDownContainer.setVisibility(View.GONE);
+        });
+
+        findViewById(R.id.dogButton).setOnClickListener(v -> {
+            doodleView.setBackgroundResource(R.drawable.dog_outline);
+            dropDownContainer.setVisibility(View.GONE);
+        });
+
+        findViewById(R.id.fishButton).setOnClickListener(v -> {
+            doodleView.setBackgroundResource(R.drawable.fish_outline);
+            dropDownContainer.setVisibility(View.GONE);
+        });
+
+        doneButton.setOnClickListener(view -> {
+            findViewById(R.id.duckView).setVisibility(View.GONE);
+            findViewById(R.id.dogView).setVisibility(View.GONE);
+            findViewById(R.id.fishView).setVisibility(View.GONE);
+            View doodleView = findViewById(R.id.doodleView);
+            doodleView.setVisibility(View.VISIBLE);
+            doodleView.setBackgroundColor(Color.WHITE);        });
+
     }
 }
+

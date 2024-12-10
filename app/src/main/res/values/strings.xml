@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CISC482Doodle</string>
     <string name="clear_canvas">Clear Canvas</string>
+    <string name="done_button" />
+    <string name="done">Done</string>
+    <string name="dog">dog</string>
+    <string name="duck" />
+    <string name="fish">\n</string>
 </resources>

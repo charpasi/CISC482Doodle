@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="#E4CCA3"
+    android:background="#98C5EB"
     tools:context=".MainActivity">
 
     <!-- Tool Panel -->
@@ -15,26 +15,27 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Brush Size -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textViewBrushSize"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingStart="8dp"
                 android:text="Brush Size"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                android:paddingStart="8dp" />
+                android:textSize="16sp" />
 
             <SeekBar
                 android:id="@+id/seekBarBrushSize"
@@ -47,18 +48,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textViewOpacity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingStart="8dp"
                 android:text="Opacity"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                android:paddingStart="8dp" />
+                android:textSize="16sp" />
 
             <SeekBar
                 android:id="@+id/seekBarOpacity"
@@ -71,26 +72,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textViewColor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingStart="8dp"
                 android:text="Color"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                android:paddingStart="8dp" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:id="@+id/colorPicker"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <SeekBar
                     android:id="@+id/colorSlider"
@@ -102,43 +103,175 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Clear Canvas Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewTraceTemplates"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="#CDCECF"
+                android:padding="8dp"
+                android:text="Trace Templates ▼"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/done_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Done"
+                android:textColorLink="#E91E63"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Drop-down container -->
+        <LinearLayout
+            android:id="@+id/dropDownContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="98dp"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <!-- Trace options drop-down -->
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/duckButton"
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/duckbutton"
+                        android:contentDescription="duck"
+                        android:gravity="center"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/dogButton"
+                        android:layout_width="128dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/dogbutton"
+                        android:baselineAligned="false"
+                        android:contentDescription="@string/dog"
+                        android:elevation="8dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:visibility="visible" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/fishButton"
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/fishbutton"
+                        android:contentDescription="@string/fish"
+                        android:visibility="visible"
+                        tools:layout_editor_absoluteX="28dp"
+                        tools:layout_editor_absoluteY="418dp"
+                        tools:visibility="visible" />
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+        <!-- Clear Canvas Button -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textViewClearCanvas"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingStart="8dp"
                 android:text="Clear Canvas"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                android:paddingStart="8dp" />
+                android:textSize="16sp" />
 
             <ImageButton
                 android:id="@+id/clearButton"
                 android:layout_width="48dp"
                 android:layout_height="50dp"
                 android:layout_margin="4dp"
-                android:background="@android:color/transparent"
+                android:background="#CDCECF"
                 android:contentDescription="@string/clear_canvas"
                 android:src="@android:drawable/ic_menu_delete" />
         </LinearLayout>
+
     </LinearLayout>
 
+
     <!-- Doodle View Canvas -->
+    <com.example.cisc482doodle.DoodleView
+        android:id="@+id/doodleView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
+
     <com.example.cisc482doodle.DoodleView
         android:id="@+id/doodleView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/toolPanel"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
+
+
+    <com.example.cisc482doodle.DoodleView
+        android:id="@+id/duckView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha=".75"
+        android:background="@drawable/ducktrace"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
+
+    <com.example.cisc482doodle.DoodleView
+        android:id="@+id/dogView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/dog_outline"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
+
+    <com.example.cisc482doodle.DoodleView
+        android:id="@+id/fishView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fish_outline"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolPanel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
