@@ -11,19 +11,17 @@
     tools:visibility="visible">
 
     <!-- Tool Panel -->
-
-
-    <!-- Doodle View Canvas -->
-
     <LinearLayout
         android:id="@+id/toolPanel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
         android:orientation="vertical"
         android:padding="8dp"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="27dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible">
 
         <!-- Brush Size -->
@@ -32,45 +30,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textViewBrushSize"
-                android:layout_width="0dp"
+                android:layout_width="133dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/brush_size"
-                android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <SeekBar
                 android:id="@+id/seekBarBrushSize"
-                android:layout_width="0dp"
+                android:layout_width="322dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textViewBrushSize"
+                app:layout_constraintTop_toTopOf="@id/textViewBrushSize" />
         </LinearLayout>
 
         <!-- Opacity -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
+            <!-- Opacity Slider -->
             <TextView
                 android:id="@+id/textViewOpacity"
-                android:layout_width="0dp"
+                android:layout_width="133dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/opacity"
-                android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/textViewBrushSize"
+                app:layout_constraintTop_toBottomOf="@id/textViewBrushSize" />
 
             <SeekBar
                 android:id="@+id/seekBarOpacity"
-                android:layout_width="0dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
+                app:layout_constraintEnd_toEndOf="@id/textViewOpacity"
+                app:layout_constraintStart_toEndOf="@id/textViewOpacity"
+                app:layout_constraintTop_toTopOf="@id/textViewOpacity" />
         </LinearLayout>
 
         <!-- Color Picker -->
@@ -82,12 +86,12 @@
 
             <TextView
                 android:id="@+id/textViewColor"
-                android:layout_width="0dp"
+                android:layout_width="12dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/color"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:id="@+id/colorPicker"
@@ -207,51 +211,38 @@
 
         </LinearLayout>
 
+        <com.example.cisc482doodle.DoodleView
+            android:id="@+id/doodleView"
+            android:layout_width="396dp"
+            android:layout_height="411dp"
+            android:background="#FFFFFF"
+            android:visibility="visible"
+            tools:layout_editor_absoluteY="238dp"
+            tools:visibility="visible" />
+
+        <com.example.cisc482doodle.DoodleView
+            android:id="@+id/duckView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha=".75"
+            android:background="@drawable/ducktrace"
+            android:visibility="gone" />
+
+        <com.example.cisc482doodle.DoodleView
+            android:id="@+id/dogView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/dog_outline"
+            android:visibility="gone" />
+
+        <com.example.cisc482doodle.DoodleView
+            android:id="@+id/fishView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/fish_outline"
+            android:visibility="gone" />
+
     </LinearLayout>
 
-    <com.example.cisc482doodle.DoodleView
-        android:id="@+id/doodleView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#FFFFFF"
-        android:visibility="visible"
-        tools:visibility="visible" />
-
-    <com.example.cisc482doodle.DoodleView
-        android:id="@+id/doodleView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#FFFFFF"
-        android:visibility="visible"
-        tools:visibility="visible" />
-
-    <com.example.cisc482doodle.DoodleView
-        android:id="@+id/duckView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha=".75"
-        android:background="@drawable/ducktrace"
-        android:visibility="gone" />
-
-    <com.example.cisc482doodle.DoodleView
-        android:id="@+id/dogView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/dog_outline"
-        android:visibility="gone" />
-
-    <com.example.cisc482doodle.DoodleView
-        android:id="@+id/fishView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/fish_outline"
-        android:visibility="gone" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
